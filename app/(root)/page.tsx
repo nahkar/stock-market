@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
-	return <div className="flex flex-col items-center justify-center h-screen">
-		<Button variant="default">Click me</Button>
-		<h1 className="text-2xl font-bold">Hello World</h1>
-	</div>;
+	return (
+		<div className='flex min-h-screen home-wrapper'>
+home
+		</div>
+	);
 }
