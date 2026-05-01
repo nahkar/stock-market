@@ -1,4 +1,5 @@
 import { NavItems } from '@/components/NavItems';
+import { UserDropdown } from '@/components/UserDropdown';
 import Image from 'next/image';
 import Link from 'next/link';
 export const Header = () => {
@@ -7,6 +8,7 @@ export const Header = () => {
 			<div className='container header-wrapper'>
 				<Link href='/'>
 					<Image
+						loading='eager'
 						src='/assets/icons/logo.svg'
 						alt='logo'
 						width={140}
@@ -14,8 +16,10 @@ export const Header = () => {
 						className='w-auto h-8 cursor-pointer'
 					/>
 				</Link>
-				<nav className='hidden sm:block'><NavItems /></nav>
-				{/* UserDropdown */}
+				<nav className='hidden sm:block'>
+					<NavItems />
+				</nav>
+				<UserDropdown />
 			</div>
 		</header>
 	);
