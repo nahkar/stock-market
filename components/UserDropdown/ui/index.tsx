@@ -64,9 +64,9 @@ export const UserDropdown = () => {
 				<DropdownMenuGroup>
 					<DropdownMenuItem
 						onClick={handleSignOut}
-						className='text-gray-100 font-medium focus:bg-transparent focus:text-yellow-500 focus:**:text-yellow-500! cursor-pointer'
+						className='text-gray-100 font-medium focus:bg-transparent focus:text-yellow-500 focus:**:text-yellow-500! cursor-pointer pl-2'
 					>
-						<LogOut className='h-4 w-4 mr-2 hidden sm:block' />
+						<LogOut className='h-4 w-4 mr-1 hidden sm:block' />
 						Logout
 					</DropdownMenuItem>
 					<DropdownMenuSeparator className='hidden 2lg:block bg-gray-600' />
