@@ -32,6 +32,8 @@ declare global {
 		validation?: RegisterOptions;
 		disabled?: boolean;
 		value?: string;
+		clearErrors?: UseFormClearErrors;
+		clearErrorOnEmptyBlur?: boolean;
 	};
 
 	type Option = {

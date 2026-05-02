@@ -12,7 +12,10 @@ export const InputField = ({
 	validation,
 	disabled,
 	value,
+	clearErrors,
+	clearErrorOnEmptyBlur = false,
 }: FormInputProps) => {
+	const { ref, onChange, onBlur, name: fieldName } = register(name, validation);
 	return (
 		<div className="space-y-2">
 			<Label htmlFor={name} className="form-label">
@@ -21,12 +24,19 @@ export const InputField = ({
 			<Input
 				type={type}
 				id={name}
-				{...register(name, validation)}
+				ref={ref}
+				name={fieldName}
+				onChange={onChange}
+				onBlur={(e) => {
+					void onBlur(e);
+					if (clearErrorOnEmptyBlur && clearErrors && e.currentTarget.value.trim() === '') {
+						clearErrors(name);
+					}
+				}}
 				placeholder={placeholder}
 				disabled={disabled}
 				value={value}
 				className={cn('form-input', { 'opacity-50 cursor-not-allowed': disabled })}
-				{...register(name, validation)}
 			/>
 			{error && <p className="text-red-500 text-sm">{error.message}</p>}
 		</div>

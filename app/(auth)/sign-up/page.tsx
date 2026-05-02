@@ -7,7 +7,7 @@ export default function SignUp() {
 	const {
 		register,
 		handleSubmit,
-		control,
+		clearErrors,
 		formState: { errors, isSubmitting },
 	} = useForm<SignUpFormData>({
 		defaultValues: {
@@ -38,6 +38,8 @@ export default function SignUp() {
 					label="Full Name"
 					placeholder="John Doe"
 					register={register}
+					clearErrors={clearErrors}
+					clearErrorOnEmptyBlur
 					error={errors.fullName}
 					validation={{
 						required: { value: true, message: 'Full name is required' },
@@ -49,6 +51,8 @@ export default function SignUp() {
 					label="Email"
 					placeholder="Enter your email"
 					register={register}
+					clearErrors={clearErrors}
+					clearErrorOnEmptyBlur
 					error={errors.email}
 					validation={{
 						required: { value: true, message: 'Email is required' },
@@ -63,6 +67,8 @@ export default function SignUp() {
 					label="Password"
 					placeholder="Enter your password"
 					register={register}
+					clearErrors={clearErrors}
+					clearErrorOnEmptyBlur
 					error={errors.password}
 					validation={{
 						required: { value: true, message: 'Password is required' },
