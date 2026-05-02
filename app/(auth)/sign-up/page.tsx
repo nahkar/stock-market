@@ -1,3 +1,7 @@
 export default function SignUp() {
-	return <div>SignUp</div>;
+	return (
+		<div>
+			 <h1 className="form-title">Sign Up & Personalize</h1>
+		</div>
+	);
 }

@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -e
+
+echo 'pre-commit: running ESLint…'
+pnpm lint
+
+echo 'pre-commit: running production build…'
+pnpm build
