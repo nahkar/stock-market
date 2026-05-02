@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stock Market
 
-## Getting Started
+Next.js App Router frontend for stock market dashboards (TradingView widgets, auth routes).
 
-First, run the development server:
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended, e.g. 20.x)
+- [pnpm](https://pnpm.io/) (lockfile uses `pnpm-lock.yaml`)
+
+Other package managers work, but the instructions below assume pnpm.
+
+## Setup
+
+Clone the repo, install dependencies, and let Husky wire Git hooks (via the `prepare` script):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then start the dev server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command             | Description                            |
+| ------------------- | -------------------------------------- |
+| `pnpm dev`          | Dev server (`next dev`)                |
+| `pnpm build`        | Production build (`next build`)        |
+| `pnpm start`        | Serve production output (`next start`) |
+| `pnpm lint`         | ESLint (includes Prettier via ESLint)  |
+| `pnpm lint:fix`     | ESLint with `--fix`                    |
+| `pnpm format`       | Format with Prettier                   |
+| `pnpm format:check` | Check formatting only                  |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Git hooks (Husky)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+On every commit, the **pre-commit** hook runs **`pnpm lint`** then **`pnpm build`**. Fix errors locally before committing, or temporarily skip with `--no-verify` (use sparingly).
 
-## Deploy on Vercel
+## Tech stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js** 16 · **React** 19 · **TypeScript**
+- **Tailwind CSS** 4
+- **ESLint** (Next + TypeScript presets, Prettier integrated)
+- **Prettier**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Recommended editor setup
+
+Workspace settings recommend the ESLint and Prettier extensions ([`.vscode/extensions.json`](./.vscode/extensions.json)).
+
+## Deploy
+
+Build with `pnpm build` and deploy the output like any Next.js app (see [Deploying Next.js](https://nextjs.org/docs/app/building-your-application/deploying)).
