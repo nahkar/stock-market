@@ -36,7 +36,7 @@ export default function SignUp() {
 			fullName: '',
 			email: '',
 			password: '',
-			country: 'US',
+			country: '',
 			investmentGoals: '',
 			riskTolerance: '',
 			preferredIndustry: '',
