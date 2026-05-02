@@ -1,13 +1,35 @@
 'use client';
-import { InputField } from '@/components/forms';
+import { InputField, SelectField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
+export const INVESTMENT_GOALS_OPTIONS = [
+	{ value: 'Growth', label: 'Growth' },
+	{ value: 'Income', label: 'Income' },
+	{ value: 'Balanced', label: 'Balanced' },
+	{ value: 'Conservative', label: 'Conservative' },
+];
+
+export const RISK_TOLERANCE_OPTIONS = [
+	{ value: 'Low', label: 'Low' },
+	{ value: 'Medium', label: 'Medium' },
+	{ value: 'High', label: 'High' },
+];
+
+export const PREFERRED_INDUSTRIES_OPTIONS = [
+	{ value: 'Technology', label: 'Technology' },
+	{ value: 'Healthcare', label: 'Healthcare' },
+	{ value: 'Finance', label: 'Finance' },
+	{ value: 'Energy', label: 'Energy' },
+	{ value: 'Consumer Goods', label: 'Consumer Goods' },
+];
 
 export default function SignUp() {
 	const {
 		register,
 		handleSubmit,
 		clearErrors,
+		control,
 		formState: { errors, isSubmitting },
 	} = useForm<SignUpFormData>({
 		defaultValues: {
@@ -15,9 +37,9 @@ export default function SignUp() {
 			email: '',
 			password: '',
 			country: 'US',
-			investmentGoals: 'Growth',
-			riskTolerance: 'Medium',
-			preferredIndustry: 'Technology ',
+			investmentGoals: '',
+			riskTolerance: '',
+			preferredIndustry: '',
 		},
 		mode: 'onBlur',
 	});
@@ -74,6 +96,33 @@ export default function SignUp() {
 						required: { value: true, message: 'Password is required' },
 						minLength: { value: 8, message: 'Password must be at least 8 characters long' },
 					}}
+				/>
+				<SelectField
+					name="investmentGoals"
+					label="Investment Goals"
+					placeholder="Select your investment goals"
+					options={INVESTMENT_GOALS_OPTIONS}
+					control={control}
+					error={errors.investmentGoals}
+					required
+				/>
+				<SelectField
+					name="riskTolerance"
+					label="Risk Tolerance"
+					placeholder="Select your risk tolerance"
+					options={RISK_TOLERANCE_OPTIONS}
+					control={control}
+					error={errors.riskTolerance}
+					required
+				/>
+				<SelectField
+					name="preferredIndustry"
+					label="Preferred Industry"
+					placeholder="Select your preferred industry"
+					options={PREFERRED_INDUSTRIES_OPTIONS}
+					control={control}
+					error={errors.preferredIndustry}
+					required
 				/>
 				<Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
 					{isSubmitting ? 'Creating account' : 'Start Your Investment Journey'}
