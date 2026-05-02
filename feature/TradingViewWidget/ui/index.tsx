@@ -13,11 +13,7 @@ import {
 } from '../model/constants';
 
 type Props = {
-	widgetType:
-		| 'market_overview'
-		| 'heatmap'
-		| 'top_stories'
-		| 'market_quote'
+	widgetType: 'market_overview' | 'heatmap' | 'top_stories' | 'market_quote';
 	height?: number;
 	className?: string;
 	title?: string;
@@ -53,13 +49,10 @@ export const TradingViewWidget = ({ widgetType, height = 600, className, title }
 		height,
 	});
 	return (
-		<div className='w-full'>
-			{title && <h3 className='text-2xl font-semibold text-gray-100 mb-5'>{title}</h3>}
-			<div
-				className={`tradingview-widget-container h-full w-full ${className}`}
-				ref={containerRef}
-			>
-				<div className='tradingview-widget-container__widget h-full w-full'></div>
+		<div className="w-full">
+			{title && <h3 className="text-2xl font-semibold text-gray-100 mb-5">{title}</h3>}
+			<div className={`tradingview-widget-container h-full w-full ${className}`} ref={containerRef}>
+				<div className="tradingview-widget-container__widget h-full w-full"></div>
 			</div>
 		</div>
 	);

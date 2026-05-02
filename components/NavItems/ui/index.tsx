@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation';
 export const NavItems = () => {
 	const pathname = usePathname();
 	const isActive = (path: string) => {
-		if(path === '/') return pathname === '/';
+		if (path === '/') return pathname === '/';
 		return pathname.startsWith(path);
 	};
 	return (
-		<ul className='flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium'>
+		<ul className="flex flex-col sm:flex-row p-2 gap-3 sm:gap-10 font-medium">
 			{NAV_ITEMS.map(({ href, label }) => (
 				<li key={href}>
 					<Link

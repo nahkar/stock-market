@@ -1,7 +1,11 @@
-export const TRADINGVIEW_MARKET_OVERVIEW_SCRIPT_URL = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
-export const TRADINGVIEW_HEATMAP_SCRIPT_URL = 'https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js';
-export const TRADINGVIEW_TOP_STORIES_SCRIPT_URL = 'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
-export const TRADINGVIEW_MARKET_QUOTE_SCRIPT_URL = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
+export const TRADINGVIEW_MARKET_OVERVIEW_SCRIPT_URL =
+	'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+export const TRADINGVIEW_HEATMAP_SCRIPT_URL =
+	'https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js';
+export const TRADINGVIEW_TOP_STORIES_SCRIPT_URL =
+	'https://s3.tradingview.com/external-embedding/embed-widget-timeline.js';
+export const TRADINGVIEW_MARKET_QUOTE_SCRIPT_URL =
+	'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js';
 // TradingView Charts
 export const MARKET_OVERVIEW_WIDGET_CONFIG = {
 	colorTheme: 'dark', // dark mode
@@ -20,38 +24,38 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
 	belowLineFillColorFallingBottom: 'rgba(41, 98, 255, 0)',
 	symbolActiveColor: 'rgba(15, 237, 190, 0.05)', // highlight color for active symbol
 	tabs: [
-			{
-					title: 'Financial',
-					symbols: [
-							{ s: 'NYSE:JPM', d: 'JPMorgan Chase' },
-							{ s: 'NYSE:WFC', d: 'Wells Fargo Co New' },
-							{ s: 'NYSE:BAC', d: 'Bank Amer Corp' },
-							{ s: 'NYSE:HSBC', d: 'Hsbc Hldgs Plc' },
-							{ s: 'NYSE:C', d: 'Citigroup Inc' },
-							{ s: 'NYSE:MA', d: 'Mastercard Incorporated' },
-					],
-			},
-			{
-					title: 'Technology',
-					symbols: [
-							{ s: 'NASDAQ:AAPL', d: 'Apple' },
-							{ s: 'NASDAQ:GOOGL', d: 'Alphabet' },
-							{ s: 'NASDAQ:MSFT', d: 'Microsoft' },
-							{ s: 'NASDAQ:FB', d: 'Meta Platforms' },
-							{ s: 'NYSE:ORCL', d: 'Oracle Corp' },
-							{ s: 'NASDAQ:INTC', d: 'Intel Corp' },
-					],
-			},
-			{
-					title: 'Services',
-					symbols: [
-							{ s: 'NASDAQ:AMZN', d: 'Amazon' },
-							{ s: 'NYSE:BABA', d: 'Alibaba Group Hldg Ltd' },
-							{ s: 'NYSE:T', d: 'At&t Inc' },
-							{ s: 'NYSE:WMT', d: 'Walmart' },
-							{ s: 'NYSE:V', d: 'Visa' },
-					],
-			},
+		{
+			title: 'Financial',
+			symbols: [
+				{ s: 'NYSE:JPM', d: 'JPMorgan Chase' },
+				{ s: 'NYSE:WFC', d: 'Wells Fargo Co New' },
+				{ s: 'NYSE:BAC', d: 'Bank Amer Corp' },
+				{ s: 'NYSE:HSBC', d: 'Hsbc Hldgs Plc' },
+				{ s: 'NYSE:C', d: 'Citigroup Inc' },
+				{ s: 'NYSE:MA', d: 'Mastercard Incorporated' },
+			],
+		},
+		{
+			title: 'Technology',
+			symbols: [
+				{ s: 'NASDAQ:AAPL', d: 'Apple' },
+				{ s: 'NASDAQ:GOOGL', d: 'Alphabet' },
+				{ s: 'NASDAQ:MSFT', d: 'Microsoft' },
+				{ s: 'NASDAQ:FB', d: 'Meta Platforms' },
+				{ s: 'NYSE:ORCL', d: 'Oracle Corp' },
+				{ s: 'NASDAQ:INTC', d: 'Intel Corp' },
+			],
+		},
+		{
+			title: 'Services',
+			symbols: [
+				{ s: 'NASDAQ:AMZN', d: 'Amazon' },
+				{ s: 'NYSE:BABA', d: 'Alibaba Group Hldg Ltd' },
+				{ s: 'NYSE:T', d: 'At&t Inc' },
+				{ s: 'NYSE:WMT', d: 'Walmart' },
+				{ s: 'NYSE:V', d: 'Visa' },
+			],
+		},
 	],
 	support_host: 'https://www.tradingview.com', // TradingView host
 	backgroundColor: '#141414', // background color
@@ -101,38 +105,38 @@ export const MARKET_DATA_WIDGET_CONFIG = {
 	isTransparent: false,
 	backgroundColor: '#0F0F0F',
 	symbolsGroups: [
-			{
-					name: 'Financial',
-					symbols: [
-							{ name: 'NYSE:JPM', displayName: 'JPMorgan Chase' },
-							{ name: 'NYSE:WFC', displayName: 'Wells Fargo Co New' },
-							{ name: 'NYSE:BAC', displayName: 'Bank Amer Corp' },
-							{ name: 'NYSE:HSBC', displayName: 'Hsbc Hldgs Plc' },
-							{ name: 'NYSE:C', displayName: 'Citigroup Inc' },
-							{ name: 'NYSE:MA', displayName: 'Mastercard Incorporated' },
-					],
-			},
-			{
-					name: 'Technology',
-					symbols: [
-							{ name: 'NASDAQ:AAPL', displayName: 'Apple' },
-							{ name: 'NASDAQ:GOOGL', displayName: 'Alphabet' },
-							{ name: 'NASDAQ:MSFT', displayName: 'Microsoft' },
-							{ name: 'NASDAQ:FB', displayName: 'Meta Platforms' },
-							{ name: 'NYSE:ORCL', displayName: 'Oracle Corp' },
-							{ name: 'NASDAQ:INTC', displayName: 'Intel Corp' },
-					],
-			},
-			{
-					name: 'Services',
-					symbols: [
-							{ name: 'NASDAQ:AMZN', displayName: 'Amazon' },
-							{ name: 'NYSE:BABA', displayName: 'Alibaba Group Hldg Ltd' },
-							{ name: 'NYSE:T', displayName: 'At&t Inc' },
-							{ name: 'NYSE:WMT', displayName: 'Walmart' },
-							{ name: 'NYSE:V', displayName: 'Visa' },
-					],
-			},
+		{
+			name: 'Financial',
+			symbols: [
+				{ name: 'NYSE:JPM', displayName: 'JPMorgan Chase' },
+				{ name: 'NYSE:WFC', displayName: 'Wells Fargo Co New' },
+				{ name: 'NYSE:BAC', displayName: 'Bank Amer Corp' },
+				{ name: 'NYSE:HSBC', displayName: 'Hsbc Hldgs Plc' },
+				{ name: 'NYSE:C', displayName: 'Citigroup Inc' },
+				{ name: 'NYSE:MA', displayName: 'Mastercard Incorporated' },
+			],
+		},
+		{
+			name: 'Technology',
+			symbols: [
+				{ name: 'NASDAQ:AAPL', displayName: 'Apple' },
+				{ name: 'NASDAQ:GOOGL', displayName: 'Alphabet' },
+				{ name: 'NASDAQ:MSFT', displayName: 'Microsoft' },
+				{ name: 'NASDAQ:FB', displayName: 'Meta Platforms' },
+				{ name: 'NYSE:ORCL', displayName: 'Oracle Corp' },
+				{ name: 'NASDAQ:INTC', displayName: 'Intel Corp' },
+			],
+		},
+		{
+			name: 'Services',
+			symbols: [
+				{ name: 'NASDAQ:AMZN', displayName: 'Amazon' },
+				{ name: 'NYSE:BABA', displayName: 'Alibaba Group Hldg Ltd' },
+				{ name: 'NYSE:T', displayName: 'At&t Inc' },
+				{ name: 'NYSE:WMT', displayName: 'Walmart' },
+				{ name: 'NYSE:V', displayName: 'Visa' },
+			],
+		},
 	],
 };
 
