@@ -1,5 +1,5 @@
 'use client';
-import { CountrySelectField, InputField, SelectField } from '@/components/forms';
+import { CountrySelectField, FooterLinks, InputField, SelectField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -134,6 +134,8 @@ export default function SignUp() {
 				<Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
 					{isSubmitting ? 'Creating account' : 'Start Your Investment Journey'}
 				</Button>
+
+				<FooterLinks text="Already have an account?" linkText="Sign in" href="/sign-in" />
 			</form>
 		</div>
 	);
