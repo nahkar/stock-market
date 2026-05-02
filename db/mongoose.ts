@@ -1,11 +1,16 @@
 import mongoose from 'mongoose';
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
+type MongooseConnection = Awaited<ReturnType<typeof mongoose.connect>>;
+
 declare global {
-	var mongooseCache: {
-		conn: typeof mongoose | null;
-		promise: Promise<typeof mongoose> | null;
-	};
+	var mongooseCache:
+		| {
+				conn: MongooseConnection | null;
+				promise: Promise<MongooseConnection> | null;
+		  }
+		| undefined;
 }
 
 let cached = global.mongooseCache;
@@ -14,7 +19,7 @@ if (!cached) {
 	cached = global.mongooseCache = { conn: null, promise: null };
 }
 
-export const connectToDatabase = async () => {
+export const connectToDatabase = async (): Promise<MongooseConnection> => {
 	if (!MONGODB_URI) {
 		throw new Error('MONGODB_URI must be set in the environment variables');
 	}
