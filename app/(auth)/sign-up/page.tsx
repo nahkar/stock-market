@@ -1,4 +1,5 @@
 'use client';
+import { InputField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -32,6 +33,42 @@ export default function SignUp() {
 		<div>
 			<h1 className="form-title">Sign Up & Personalize</h1>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+				<InputField
+					name="fullName"
+					label="Full Name"
+					placeholder="John Doe"
+					register={register}
+					error={errors.fullName}
+					validation={{
+						required: { value: true, message: 'Full name is required' },
+						minLength: { value: 3, message: 'Full name must be at least 3 characters long' },
+					}}
+				/>
+				<InputField
+					name="email"
+					label="Email"
+					placeholder="Enter your email"
+					register={register}
+					error={errors.email}
+					validation={{
+						required: { value: true, message: 'Email is required' },
+						pattern: {
+							value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+							message: 'Please enter a valid email address',
+						},
+					}}
+				/>
+				<InputField
+					name="password"
+					label="Password"
+					placeholder="Enter your password"
+					register={register}
+					error={errors.password}
+					validation={{
+						required: { value: true, message: 'Password is required' },
+						minLength: { value: 8, message: 'Password must be at least 8 characters long' },
+					}}
+				/>
 				<Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
 					{isSubmitting ? 'Creating account' : 'Start Your Investment Journey'}
 				</Button>
