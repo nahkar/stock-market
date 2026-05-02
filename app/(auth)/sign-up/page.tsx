@@ -1,5 +1,5 @@
 'use client';
-import { InputField, SelectField } from '@/components/forms';
+import { CountrySelectField, InputField, SelectField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -83,6 +83,13 @@ export default function SignUp() {
 							message: 'Please enter a valid email address',
 						},
 					}}
+				/>
+				<CountrySelectField
+					name="country"
+					label="Country"
+					control={control}
+					error={errors.country}
+					required
 				/>
 				<InputField
 					name="password"
