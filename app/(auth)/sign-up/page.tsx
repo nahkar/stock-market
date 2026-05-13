@@ -106,6 +106,7 @@ export default function SignUp() {
 				/>
 				<InputField
 					name="password"
+					type="password"
 					label="Password"
 					placeholder="Enter your password"
 					register={register}

@@ -1,5 +1,5 @@
 'use client';
-import { CountrySelectField, FooterLinks, InputField, SelectField } from '@/components/forms';
+import { FooterLinks, InputField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -8,7 +8,6 @@ export default function SignIn() {
 		register,
 		handleSubmit,
 		clearErrors,
-		control,
 		formState: { errors, isSubmitting },
 	} = useForm<SignInFormData>({
 		defaultValues: {

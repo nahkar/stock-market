@@ -7,7 +7,7 @@ export const sendSingUpEmail = inngest.createFunction(
 		id: 'send-sing-up-email',
 		triggers: { event: 'app/user.created' },
 	},
-	async ({ event, step, runId }) => {
+	async ({ event, step }) => {
 		const userProfile = `
     - Country: ${event.data.country}
     - Investment Goals: ${event.data.investmentGoals}
