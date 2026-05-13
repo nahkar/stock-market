@@ -2,6 +2,7 @@
 
 import { auth } from '@/lib/better-auth/auth';
 import { inngest } from '@/lib/inngest/client';
+import { headers } from 'next/headers';
 
 export const signUpWithEmail = async ({
 	fullName,
@@ -35,6 +36,18 @@ export const signUpWithEmail = async ({
 		}
 
 		return { success: true, data: response };
+	} catch (error) {
+		console.error(error);
+		return { success: false, message: 'Something went wrong. Please try again' };
+	}
+};
+
+export const signOut = async () => {
+	try {
+		await auth.api.signOut({
+			headers: await headers(),
+		});
+		return { success: true };
 	} catch (error) {
 		console.error(error);
 		return { success: false, message: 'Something went wrong. Please try again' };
