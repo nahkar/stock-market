@@ -14,17 +14,11 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ChevronDown, LogOut } from 'lucide-react';
 import { NavItems } from '@/components/NavItems';
 
-export const UserDropdown = () => {
+export const UserDropdown = ({ user }: { user: User }) => {
 	const router = useRouter();
 
 	const handleSignOut = async () => {
 		router.push('/sign-in');
-	};
-
-	const user = {
-		name: 'John Doe',
-		email: 'john.doe@example.com',
-		image: 'https://github.com/shadcn.png',
 	};
 	const initials = user.name
 		.split(' ')

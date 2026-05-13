@@ -1,7 +1,10 @@
 'use client';
 import { CountrySelectField, FooterLinks, InputField, SelectField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
+import { signUpWithEmail } from '@/lib/actions/auth.actions';
+import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 export const INVESTMENT_GOALS_OPTIONS = [
 	{ value: 'Growth', label: 'Growth' },
@@ -25,6 +28,7 @@ export const PREFERRED_INDUSTRIES_OPTIONS = [
 ];
 
 export default function SignUp() {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -45,10 +49,19 @@ export default function SignUp() {
 	});
 	const onSubmit: SubmitHandler<SignUpFormData> = async (data: SignUpFormData) => {
 		try {
-			console.log(data);
+			const res = await signUpWithEmail(data);
+			console.log('Result from signUpWithEmail:', res);
+			if (res.success) {
+				router.push('/');
+			} else {
+				toast.error('Failed to create account.', {
+					description: res?.message || 'Please try again later',
+				});
+			}
 		} catch (error) {
-			console.error(error);
-		} finally {
+			toast.error('Failed to create account.', {
+				description: error instanceof Error ? error.message : 'Please try again later',
+			});
 		}
 	};
 	return (

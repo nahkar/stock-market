@@ -1,3 +1,4 @@
+import { sendWelcomeEmail } from '../nodemailer';
 import { inngest } from './client';
 import { PERSONALIZED_WELCOME_EMAIL_PROMPT } from './prompts';
 
@@ -35,7 +36,12 @@ export const sendSingUpEmail = inngest.createFunction(
 			const part = response.candidates?.[0]?.content?.parts?.[0];
 			const introText =
 				(part && 'text' in part ? part.text : null) || 'Thanks for joining Signalist!';
-			// ! Email send logic here
+
+			return await sendWelcomeEmail({
+				email: event.data.email,
+				name: event.data.fullName,
+				intro: introText,
+			});
 		});
 		return {
 			success: true,
