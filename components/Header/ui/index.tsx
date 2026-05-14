@@ -2,7 +2,8 @@ import { NavItems } from '@/components/NavItems';
 import { UserDropdown } from '@/components/UserDropdown';
 import Image from 'next/image';
 import Link from 'next/link';
-export const Header = () => {
+
+export const Header = ({ user }: { user: User }) => {
 	return (
 		<header className="sticky top-0 header">
 			<div className="container header-wrapper">
@@ -19,7 +20,7 @@ export const Header = () => {
 				<nav className="hidden sm:block">
 					<NavItems />
 				</nav>
-				<UserDropdown />
+				<UserDropdown user={user} />
 			</div>
 		</header>
 	);

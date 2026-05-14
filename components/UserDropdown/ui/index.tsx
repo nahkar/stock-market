@@ -13,18 +13,14 @@ import { useRouter } from 'next/navigation';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ChevronDown, LogOut } from 'lucide-react';
 import { NavItems } from '@/components/NavItems';
+import { signOut } from '@/lib/actions/auth.actions';
 
-export const UserDropdown = () => {
+export const UserDropdown = ({ user }: { user: User }) => {
 	const router = useRouter();
 
 	const handleSignOut = async () => {
+		await signOut();
 		router.push('/sign-in');
-	};
-
-	const user = {
-		name: 'John Doe',
-		email: 'john.doe@example.com',
-		image: 'https://github.com/shadcn.png',
 	};
 	const initials = user.name
 		.split(' ')
@@ -39,7 +35,7 @@ export const UserDropdown = () => {
 					className="flex items-center gap-2 text-gray-400 hover:text-yellow-500 cursor-pointer"
 				>
 					<Avatar className="size-8">
-						<AvatarImage src={user.image} />
+						<AvatarImage src={user?.image ?? ''} />
 						<AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
 							{initials}
 						</AvatarFallback>
@@ -55,7 +51,7 @@ export const UserDropdown = () => {
 					<DropdownMenuLabel>
 						<div className="flex relative items-center gap-2 py-2">
 							<Avatar className="size-10">
-								<AvatarImage src={user.image} />
+								<AvatarImage src={user?.image ?? ''} />
 								<AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
 									{initials}
 								</AvatarFallback>
