@@ -1,3 +1,4 @@
+import { getAllUsersForNewsEmail } from '../actions/user.actions';
 import { sendWelcomeEmail } from '../nodemailer';
 import { inngest } from './client';
 import { PERSONALIZED_WELCOME_EMAIL_PROMPT } from './prompts';
@@ -47,5 +48,19 @@ export const sendSingUpEmail = inngest.createFunction(
 			success: true,
 			message: 'Welcome email sent successfully',
 		};
+	}
+);
+
+export const sendDailyNewsSummary = inngest.createFunction(
+	{
+		id: 'send-daily-news-summary',
+		triggers: { cron: '0 12 * * *' },
+	},
+	async ({ step }) => {
+		const users = await step.run('get-all-users', getAllUsersForNewsEmail);
+		if (!users || users.length === 0) {
+			console.log('No users found for daily news summary');
+			return { success: false, message: 'No users found for daily news summary' };
+		}
 	}
 );
