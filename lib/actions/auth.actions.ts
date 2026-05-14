@@ -38,7 +38,28 @@ export const signUpWithEmail = async ({
 		return { success: true, data: response };
 	} catch (error) {
 		console.error(error);
-		return { success: false, message: 'Something went wrong. Please try again' };
+		return {
+			success: false,
+			message: error instanceof Error ? error.message : 'Something went wrong. Please try again',
+		};
+	}
+};
+export const signInWithEmail = async ({ email, password }: SignInFormData) => {
+	try {
+		const response = await auth.api.signInEmail({
+			body: {
+				email: email,
+				password: password,
+			},
+		});
+
+		return { success: true, data: response };
+	} catch (error) {
+		console.error(error);
+		return {
+			success: false,
+			message: error instanceof Error ? error.message : 'Something went wrong. Please try again',
+		};
 	}
 };
 

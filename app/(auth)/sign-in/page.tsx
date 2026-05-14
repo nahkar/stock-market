@@ -1,9 +1,13 @@
 'use client';
 import { FooterLinks, InputField } from '@/components/forms';
 import { Button } from '@/components/ui/button';
+import { signInWithEmail } from '@/lib/actions/auth.actions';
+import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 
 export default function SignIn() {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -18,10 +22,18 @@ export default function SignIn() {
 	});
 	const onSubmit: SubmitHandler<SignInFormData> = async (data: SignInFormData) => {
 		try {
-			console.log(data);
+			const res = await signInWithEmail(data);
+			if (res.success) {
+				router.push('/');
+			} else {
+				toast.error('Failed to sign in.', {
+					description: res?.message || 'Please try again later',
+				});
+			}
 		} catch (error) {
-			console.error(error);
-		} finally {
+			toast.error('Failed to sign in.', {
+				description: error instanceof Error ? error.message : 'Please try again later',
+			});
 		}
 	};
 	return (
@@ -46,6 +58,7 @@ export default function SignIn() {
 				/>
 				<InputField
 					name="password"
+					type="password"
 					label="Password"
 					placeholder="Enter your password"
 					register={register}
