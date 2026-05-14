@@ -1,0 +1,76 @@
+'use server';
+
+import { auth } from '@/lib/better-auth/auth';
+import { inngest } from '@/lib/inngest/client';
+import { headers } from 'next/headers';
+
+export const signUpWithEmail = async ({
+	fullName,
+	email,
+	password,
+	investmentGoals,
+	riskTolerance,
+	preferredIndustry,
+	country,
+}: SignUpFormData) => {
+	try {
+		const response = await auth.api.signUpEmail({
+			body: {
+				name: fullName,
+				email: email,
+				password: password,
+			},
+		});
+		if (response) {
+			await inngest.send({
+				name: 'app/user.created',
+				data: {
+					email: email,
+					fullName: fullName,
+					investmentGoals,
+					riskTolerance,
+					preferredIndustry,
+					country,
+				},
+			});
+		}
+
+		return { success: true, data: response };
+	} catch (error) {
+		console.error(error);
+		return {
+			success: false,
+			message: error instanceof Error ? error.message : 'Something went wrong. Please try again',
+		};
+	}
+};
+export const signInWithEmail = async ({ email, password }: SignInFormData) => {
+	try {
+		const response = await auth.api.signInEmail({
+			body: {
+				email: email,
+				password: password,
+			},
+		});
+
+		return { success: true, data: response };
+	} catch (error) {
+		console.error(error);
+		return {
+			success: false,
+			message: error instanceof Error ? error.message : 'Something went wrong. Please try again',
+		};
+	}
+};
+
+export const signOut = async () => {
+	try {
+		await auth.api.signOut({
+			headers: await headers(),
+		});
+		return { success: true };
+	} catch (error) {
+		console.error(error);
+		return { success: false, message: 'Something went wrong. Please try again' };
+	}
+};
