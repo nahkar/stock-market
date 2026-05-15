@@ -14,11 +14,14 @@ export const getAllUsersForNewsEmail = async () => {
 			.find(
 				{ email: { $exists: true, $ne: null } },
 				{
-					projection: { email: 1, id: 1, _id: 1, country: 1 },
+					projection: { email: 1, id: 1, _id: 1, country: 1, name: 1 },
 				}
 			)
 			.toArray();
-		return users.filter((user) => user.email && user.name).map(({ email, id }) => ({ email, id }));
+		console.log(123, users);
+		return users
+			.filter((user) => user.email && user.name)
+			.map(({ email, id, name }) => ({ email, id, name }));
 	} catch (error) {
 		console.error(error);
 		return [];
